@@ -32,6 +32,8 @@ RUN chown -R pwuser:pwuser /app
 # Switch to non-root user
 USER pwuser
 
-# Set entrypoint and default arguments
-ENTRYPOINT ["uv", "run", "-m", "linkedin_mcp_server"]
+# Set entrypoint
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
+ENTRYPOINT ["/app/start.sh"]
 CMD []
